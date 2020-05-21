@@ -1,0 +1,32 @@
+CREATE TABLE students (
+studentId SERIAL PRIMARY KEY,
+firstName VARCHAR(30),
+lastName VARCHAR(30),
+email VARCHAR(40)
+);
+
+CREATE TABLE grades (
+gradeId SERIAL PRIMARY KEY,
+studentId int,
+score int
+);
+
+INSERT INTO students (firstName, lastName, email)
+VALUES ('Wilma','Flintstone','wilma@quarry.com'), ('Betty','Rubble','betty@quarry.com'),
+('Fred','Flintstone','fred@quarry.com'),('Barney','Rubble','barney@quarry.com');
+
+INSERT INTO grades (studentId, score)
+VALUES (1,90),(1,100),(1,95),(1,99),(2,89),(2,88),(2,87),(2,86),
+(3,78),(3,77),(3,75),(3,70),(4,69),(4,68),(4,69),(4,68);
+
+curl commands to test
+
+INSERT
+curl --data "firstname=Mildred&lastname=Smith&email=mildred@quarry.com" http://localhost:3000/students
+
+UPDATE
+curl -X PUT -d "firstname=Millie" -d "lastname=Smith" -d "email=millie@quarry.com" http://localhost:3000/students/8
+curl -X PUT -d "firstname=BamBam" -d "lastname=Rubble" -d "email=bambam@quarry.com" http://localhost:3000/students/7
+
+DELETE
+
